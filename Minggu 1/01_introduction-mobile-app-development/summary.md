@@ -18,6 +18,6 @@ Untuk menjalankan software, terdapat 2 buah cara yang berbeda yaitu menggunakan 
 
 Pada platform Mobile, terdapat 2 sistem operasi yang paling banyak digunakan saat ini, yaitu :
 
-- iOS : dikembangkan oleh Apple     (contoh aplikasi : ProCreate, Paper by WeTransfer)
+- iOS : dikembangkan oleh Apple     (contoh aplikasi yang tidak ada di Android : ProCreate, Paper by WeTransfer)
 
-- Android : dikembangkan secara open source (contoh aplikasi : Tasker, Tachiyomi)
+- Android : dikembangkan secara open source (contoh aplikasi yang tidak ada di iOS : Tasker, Tachiyomi)
