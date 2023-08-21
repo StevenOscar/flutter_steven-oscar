@@ -2,7 +2,7 @@
 
 ## Poin Pertama
 
-Pertemuan pada Minggu 1 membahas tentang dasar-dasar software/perangkat lunak terutama dalam aplikasi mobile.
+Pertemuan pada Minggu 1 pertemuan 1 membahas tentang dasar-dasar software/perangkat lunak terutama dalam aplikasi mobile.
 
 Perangkat lunak (software) merupakan kumpulan perintah-perintah yang tidak memiliki bentuk fisik.
 
