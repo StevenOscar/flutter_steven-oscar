@@ -1,4 +1,6 @@
 /*
+SOAL :
+
 1. Buatlah sebuah program untuk mengecek apakah sebuah bilangan termasuk bilangan prima atau bukan.
 2. Buatlah sebuah program untuk mencetak tabel perkalian.
 */

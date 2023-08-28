@@ -1,4 +1,6 @@
 /*
+SOAL :
+
 ## Tugas Looping
 1. Buatlah sebuah piramid bintang seperti gambar dibawah ini:
 
@@ -122,7 +124,7 @@ void main(List<String> args) {
           }
           BigInt sum = BigInt.from(1);  //Menggunakan tipe data BigInt agar bisa menampung nilai yang lebih besar
 
-          //Melakukan perulangan untuk menghitung faktorial
+          //Melakukan perulangan untuk menghitung faktorial dengan cara iterasi
           for(int i = 1;i<=number;i++){
             sum = sum * BigInt.from(i);
           }

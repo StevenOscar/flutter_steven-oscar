@@ -3,12 +3,12 @@
 
 Future<List<int>> fungsiList (List<int> data, int pengali) async{
   List<int> ListBaru = [];
-    for(int i=0;i< data.length;i++){
-     await Future.delayed(Duration(seconds: 1), (){
-      ListBaru.add(data[i] * pengali);
-      print("Data ditambahkan dalam list baru : ${ListBaru[i]}");
-     });
-    }
+  for(int i=0;i< data.length;i++){
+    await Future.delayed(Duration(seconds: 1), (){
+    ListBaru.add(data[i] * pengali);
+    print("Data ditambahkan dalam list baru : ${ListBaru[i]}");
+    });
+  }
   return ListBaru;
 }
 
