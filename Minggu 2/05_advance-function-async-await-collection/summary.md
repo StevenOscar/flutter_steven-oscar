@@ -1,4 +1,4 @@
-# Summary/Resume Minggu 1 (Fundamental Dart)
+# Summary/Resume Minggu 2 (Advance Function, Async-Await, dan Collection Dart)
 
 ## Poin Pertama
 
