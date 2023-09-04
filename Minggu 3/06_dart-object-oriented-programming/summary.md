@@ -17,5 +17,5 @@ Komponen-komponen utama yang diperlukan dalam OOP terdiri dari :
 
 - Class : Merupakan suatu blueprint yang digunakan untuk menciptakan objek. Class mendefinisikan property dan method yang akan dimiliki oleh objek yang akan dibuat.
 - Object : Merupakan bentuk sebenarnya/konkret dari Class yang dapat diperlakukan seperti data.
-- Property : Merupakan variabel yang berada pada sebuah object. Proprty merepresentasikan karakteristik atau data yang dimiliki oleh objek tersebut.
+- Property : Merupakan variabel yang berada pada sebuah object. Property merepresentasikan karakteristik atau data yang dimiliki oleh objek tersebut.
 - Method : Merupakan fungsi atau aktivitas yang dapat dilakukan oleh suatu objek.
