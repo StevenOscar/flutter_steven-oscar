@@ -22,13 +22,14 @@ class KelipatanPersekutuanTerkecil implements Matematika{
 
   @override
   void hasil() {
+    //List untuk menyimpan Kelipatan masing-masing bilangan
     List<int> kelipatanX = [x];
     List<int> kelipatanY = [y];
-    int KPK = 0;
+    int kpk = 0;
 
-    while (KPK == 0){
+    while (kpk == 0){
       if(kelipatanX.last == kelipatanY.last){
-        KPK = kelipatanX.last;
+        kpk = kelipatanX.last;
       } else if(kelipatanX.last > kelipatanY.last){
         kelipatanY.add(kelipatanY.last + kelipatanY[0]);
       } else {
@@ -38,7 +39,7 @@ class KelipatanPersekutuanTerkecil implements Matematika{
 
     print("\nKelipatan dari bilangan $x adalah : $kelipatanX");
     print("Kelipatan dari bilangan $y adalah : $kelipatanY");
-    print("\nSehingga Kelipatan Persekutuan Terkecil dari kedua bilangan tersebut adalah : $KPK");
+    print("\nSehingga Kelipatan Persekutuan Terkecil dari kedua bilangan tersebut adalah : $kpk");
   }
 }
 
@@ -53,9 +54,10 @@ class FaktorPersekutuanTerbesar implements Matematika{
 
   @override
   void hasil() {
+    //List untuk menyimpan faktor masing-masing bilangan
     List<int> faktorX = [];
     List<int> faktorY = [];
-    int FPB = 1;
+    int fpb = 1;
 
     for(int i = 1; i <= (x > y ? x : y); i++){
       if(x % i == 0){
@@ -65,13 +67,13 @@ class FaktorPersekutuanTerbesar implements Matematika{
         faktorY.add(i);
       }
       if(x % i == 0 && y % i == 0){
-        FPB = i;
+        fpb = i;
       }
     }
 
     print("\nFaktor dari bilangan $x adalah : $faktorX");
     print("Faktor dari bilangan $y adalah : $faktorY");
-    print("\nSehingga Faktor Persekutuan Terbesar dari kedua bilangan tersebut adalah : $FPB");
+    print("\nSehingga Faktor Persekutuan Terbesar dari kedua bilangan tersebut adalah : $fpb");
   }
 }
 
@@ -101,8 +103,8 @@ void main(List<String> args) {
         return print("Masukkan nilai yang sesuai!");
       }
 
-      Matematika KPK = KelipatanPersekutuanTerkecil(x: num1, y : num2);
-      KPK.hasil();
+      Matematika kpk = KelipatanPersekutuanTerkecil(x: num1, y : num2);
+      kpk.hasil();
     break;
     case 2 :
       print("\nMasukkan Bilangan Pertama : ");
