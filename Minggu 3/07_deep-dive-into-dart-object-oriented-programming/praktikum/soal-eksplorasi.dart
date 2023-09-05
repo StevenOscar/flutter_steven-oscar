@@ -71,7 +71,7 @@ class Rectangle extends Shape{
 
   @override
   int getPerimeter() {
-    return 2 * width * height;
+    return 2 * (width + height);
   }
 }
 
