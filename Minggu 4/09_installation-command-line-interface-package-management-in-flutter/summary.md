@@ -104,7 +104,7 @@ flutter clean
 
 ### Langkah menambahkan package di Flutter
 
-1. Cari Package di [pub.dev](pub.dev), lalu cari package yang diigunkan, misalnya package http.
+1. Cari Package di [pub.dev](pub.dev), lalu cari package yang diinginkan, misalnya package http.
 
 2. Copy Baris Dependencies package tersebut di Installing
 
