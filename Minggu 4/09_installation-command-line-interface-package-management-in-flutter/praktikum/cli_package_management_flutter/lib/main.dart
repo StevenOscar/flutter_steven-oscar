@@ -37,7 +37,7 @@ class MyHomePage extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 40,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w300,
           )
         ),
       ),

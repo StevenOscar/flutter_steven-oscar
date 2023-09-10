@@ -1,8 +1,8 @@
-# Summary/Resume Minggu 4 (Installation Command Line Interface and Package Management Flutter))
+# Summary/Resume Minggu 4 (Installation Command Line Interface and Package Management Flutter)
 
 ## Poin Pertama
 
-Pertemuan pada Minggu 3 pertemuan 3 membahas tentang Flutter CLI dan Package Management. 
+Pertemuan pada Minggu 4 pertemuan 1 membahas tentang Flutter CLI dan Package Management.
 
 ### Flutter CLI
 
