@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
     } else if(!(val.contains(" "))){
       errorTextName = "Nama minimal terdiri dari 2 kata";
       _isNameValid = false;
-    } else if(RegExp(r'[1-9!@#$%^&*()_+{}\[\]:;<>,.?/~\\-]').hasMatch(val)){
+    } else if(RegExp(r'[0-9!@#$%^&*()_+{}\[\]:;<>,.?/~\\-]').hasMatch(val)){
       errorTextName = "Nama tidak boleh mengandung angka atau karakter khusus";
       _isNameValid = false;
     } else if(RegExp(r'\b[a-z][a-z]*\b').hasMatch(val)){
