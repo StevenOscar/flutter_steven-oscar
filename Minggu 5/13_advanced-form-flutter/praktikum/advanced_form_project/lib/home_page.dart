@@ -469,14 +469,7 @@ class _HomePageState extends State<HomePage> {
                                 onPressed: () {
                                   _nameController = TextEditingController(text : contactList[index].name);
                                   _numberController = TextEditingController(text : contactList[index].number);
-                                  pickedDateValue = contactList[index].birthDate;
                                   pickedColorValue = contactList[index].profileColor;
-                                  profilePictureFile = contactList[index].profilePicture;
-                                  print("Nama : ${contactList[index].name}");
-                                  print("Nomor Telepon : ${contactList[index].number}");
-                                  print("Tanggal lahir : ${contactList[index].birthDate}");
-                                  print("Warna Profil : ${contactList[index].profileColor}");
-                                  print("Nama File Gambar : ${contactList[index].profilePicture?.name}");
                                   editDialog(index);
                                 }
                               ),
