@@ -58,7 +58,7 @@ ElevatedButton(
 )
 ```
 
-#### ColorPicker
+### ColorPicker
 
 ColorPicker adalah widget dimana user bisa menginputkan data berupa warna/color. colorPicker bisa digunakan pada kasus ketika ingin mengcustomize tema aplikasi atau mengcustomize profile akun di aplikasi. colorPicker memiliki beberapa jenis seperti blockPicker, colorPicker, dan slidePicker.
 
