@@ -84,7 +84,7 @@ class _GalleryPageState extends State<GalleryPage> {
           :
           const Center(
             child: Text(
-              "Please Pick Image Category from Drawer",
+              "Please Select Image Category from Drawer",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 24,
