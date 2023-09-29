@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/image_model.dart';
+import '../../models/image_model.dart';
 
 class ImageDetailPage extends StatelessWidget {
   const ImageDetailPage({super.key});
@@ -18,6 +18,7 @@ class ImageDetailPage extends StatelessWidget {
             fontWeight: FontWeight.w600
           ),
         ),
+        backgroundColor: Colors.cyan,
       ),
       body: Center(
         child: ClipRect(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'gallery_page.dart';
-import 'page/image_detail_page.dart';
+import 'pages/contact_page/contact_page.dart';
+import 'home_page.dart';
+import 'pages/gallery_page/gallery_page.dart';
+import 'pages/gallery_page/image_detail_page.dart';
 import 'routes_navigation.dart';
 
 void main() {
@@ -16,8 +18,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: "Poppins"
       ),
-      initialRoute: RoutesNavigation().galleryPage,
+      initialRoute: RoutesNavigation().homePage,
       routes: {
+        RoutesNavigation().homePage: (_) => const HomePage(),
+        RoutesNavigation().contactPage: (_) => const ContactPage(),
         RoutesNavigation().galleryPage: (_) => const GalleryPage(),
         RoutesNavigation().imageDetailPage: (_) => const ImageDetailPage(),
       },

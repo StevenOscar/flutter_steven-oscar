@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
-class ElevatedButtonWidget extends StatelessWidget {
+import '../../themes/theme_colors.dart';
+import '../../themes/theme_text_style.dart';
+
+class ElevatedButtonContactWidget extends StatelessWidget {
   final String text;
   final Size fixedSize;
   final OutlinedBorder shape;
-  final void Function() onPressed;
+  final void Function()? onPressed;
 
 
-  const ElevatedButtonWidget({
+  const ElevatedButtonContactWidget({
     super.key,
     required this.text,
     required this.fixedSize,
     required this.shape,
-    required this.onPressed
+    this.onPressed
   });
 
   @override
@@ -21,17 +24,13 @@ class ElevatedButtonWidget extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         elevation: 0,
         fixedSize: fixedSize,
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: ThemeColors().m3SysLightPrimary,
         shape: shape
       ),
       onPressed: onPressed,
       child: Text(text,
         maxLines: 2,
-        style: const TextStyle(
-          fontSize: 18,
-          color: Colors.white,
-          fontWeight: FontWeight.w500
-        )
+        style: ThemeTextStyles().m3LabelLarge
       )
     );
   }
