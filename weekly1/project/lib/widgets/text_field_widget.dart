@@ -29,11 +29,12 @@ class TextFieldWidget extends StatelessWidget {
       maxLines: maxLines,
       keyboardType: keyboardType,
       decoration: InputDecoration(
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderSide: BorderSide(
           color: Colors.black
         )),
         errorText: errorText,
+        errorStyle: const TextStyle(fontSize: 12,color: Color.fromARGB(255, 255, 113, 100)),
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             width: 2,

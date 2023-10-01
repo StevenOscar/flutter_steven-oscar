@@ -5,13 +5,13 @@
     bool isNameValid;
 
     if(val.isEmpty){
-      errorTextName = "Nama harus diisi";
+      errorTextName = "Name must be filled";
       isNameValid = false;
     } else if(RegExp(r'[0-9!@#$%^&*()_+{}\[\]:;<>,.?/~\\-]').hasMatch(val)){
-      errorTextName = "Nama tidak boleh mengandung angka atau karakter khusus";
+      errorTextName = "Nama must be alphabet";
       isNameValid = false;
     } else if(RegExp(r'\b[a-z][a-z]*\b').hasMatch(val)){
-      errorTextName = "Setiap kata harus diawali dengan huruf kapital";
+      errorTextName = "Name must be capital";
       isNameValid = false;
     } else {
       errorTextName = null;
@@ -27,14 +27,14 @@
     bool isEmailValid;
 
     if(val.isEmpty){
-      errorTextEmail = "Email harus diisi";
+      errorTextEmail = "Email must be filled";
       isEmailValid = false;
     } else if(RegExp(r'^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$').hasMatch(val)){
-      errorTextEmail = "Format Email tidak valid";
-      isEmailValid = false;
-    } else {
       errorTextEmail = null;
       isEmailValid = true;
+    } else {
+      errorTextEmail = "Invalid email format";
+      isEmailValid = false;
     }
     return {"errorTextEmail" : errorTextEmail, "isEmailValid" : isEmailValid};
   }

@@ -41,6 +41,7 @@ class _ContactUsSectionState extends State<ContactUsSection> {
     _isFirstNameValid = false;
     _isLastNameValid = false;
     _isEmailValid = false;
+    _isMessageValid = false;
     _firstNameValue = "";
     _lastNameValue = "";
     _emailValue = "";
@@ -121,27 +122,31 @@ class _ContactUsSectionState extends State<ContactUsSection> {
                             "First Name",
                             style: ThemeTextStyles().bodyMediumNormalWhite,
                           ),
-                          TextFieldWidget(
-                            controller: firstNameController,
-                            keyboardType: TextInputType.name,
-                            hintText: "First Name",
-                            label: "First Name",
-                            onChanged: (val){
-                              setState(() {
-                                _firstNameValue = val;
-                                _isFirstNameValid = nameValidator(
-                                  val: val,
-                                )["isNameValid"];
-                                errorTextFirstName = nameValidator(
-                                  val: val,
-                                )["errorTextName"];
-                              });
-                            },
+                          SizedBox(
+                            height: 88,
+                            child: TextFieldWidget(
+                              controller: firstNameController,
+                              keyboardType: TextInputType.name,
+                              hintText: "First Name",
+                              label: "First Name",
+                              errorText: errorTextFirstName,
+                              onChanged: (val){
+                                setState(() {
+                                  _firstNameValue = val;
+                                  _isFirstNameValid = nameValidator(
+                                    val: val,
+                                  )["isNameValid"];
+                                  errorTextFirstName = nameValidator(
+                                    val: val,
+                                  )["errorTextName"];
+                                });
+                              },
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(width: 20),
+                    const SizedBox(width: 15),
                     Expanded(
                       child: Column(
                         children: [
@@ -149,22 +154,26 @@ class _ContactUsSectionState extends State<ContactUsSection> {
                             "Last Name",
                             style: ThemeTextStyles().bodyMediumNormalWhite,
                           ),
-                          TextFieldWidget(
-                            controller: lastNameController,
-                            keyboardType: TextInputType.name,
-                            hintText: "Last Name",
-                            label: "Last Name",
-                            onChanged: (val){
-                              setState(() {
-                                _lastNameValue = val;
-                                _isLastNameValid = nameValidator(
-                                  val: val,
-                                )["isNameValid"];
-                                errorTextLastName = nameValidator(
-                                  val: val,
-                                )["errorTextName"];
-                              });
-                            },
+                          SizedBox(
+                            height: 88,
+                            child: TextFieldWidget(
+                              controller: lastNameController,
+                              keyboardType: TextInputType.name,
+                              hintText: "Last Name",
+                              label: "Last Name",
+                              errorText: errorTextLastName,
+                              onChanged: (val){
+                                setState(() {
+                                  _lastNameValue = val;
+                                  _isLastNameValid = nameValidator(
+                                    val: val,
+                                  )["isNameValid"];
+                                  errorTextLastName = nameValidator(
+                                    val: val,
+                                  )["errorTextName"];
+                                });
+                              },
+                            ),
                           ),
                         ],
                       ),
@@ -184,6 +193,7 @@ class _ContactUsSectionState extends State<ContactUsSection> {
                         keyboardType: TextInputType.emailAddress,
                         hintText: "Insert your email",
                         label: "Email",
+                        errorText: errorTextEmail,
                         onChanged: (val){
                           setState(() {
                             _emailValue = val;
@@ -209,7 +219,7 @@ class _ContactUsSectionState extends State<ContactUsSection> {
                       ),
                       Card(
                         child: TextFieldWidget(
-                          maxLines : 5,
+                          maxLines : 3,
                           controller: messageController,
                           hintText: "Insert your Message",
                           label: "First Name",
@@ -227,6 +237,7 @@ class _ContactUsSectionState extends State<ContactUsSection> {
                   ),
                 ),
                 const SizedBox(height: 20),
+                _isFirstNameValid && _isLastNameValid && _isEmailValid && _isMessageValid == true ?
                 ElevatedButtonWidget(
                   text: "Submit",
                   fixedSize: const Size(200, 45),
@@ -246,7 +257,11 @@ class _ContactUsSectionState extends State<ContactUsSection> {
                       }
                     );
                   }
-                )
+                ) :
+                Text(
+                  "Please Fill the Data first",
+                  style: ThemeTextStyles().bodyMediumNormalWhite,
+                ),
               ],
             ),
           )
