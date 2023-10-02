@@ -133,7 +133,7 @@ Class yang perlu diperhatikan dalam penggunaan Provider yaitu :
     }
     ```
 
-5. Menggunakan State dari Provider -> Mengambil data Providermelalui getter (terdapat 2 cara yaitu menggunakan Provider.of() dan Consumer)
+5. Menggunakan State dari Provider -> Mengambil data Provider melalui getter (terdapat 2 cara yaitu menggunakan Provider.of() dan Consumer)
 
     ```dart
 
