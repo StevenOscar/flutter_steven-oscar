@@ -2,279 +2,151 @@
 
 ## Poin Pertama
 
-Materi pada Minggu 7 pertemuan 1 membahas tentang State Management Provider. Assets merupakan kumpulan file yang dibundle dan dideploy bersama dengan aplikasi. Kumpulan file ini dapat memiliki tipe dan ekstensi yang berbeda-beda.
+Materi pada Minggu 7 pertemuan 1 membahas tentang State Management Provider. State merupakan keadaan suatu objek/sistem beserta dengan data-datanya yang dibaca dan digunakan pada saat melakukan pembuatan/build widget. Jika tidak menggunakan State Management apapun, biasanya digunakan sebuah Stateful Widget dengan method setState() untuk dapat memperbaharui Widget sesuai dengan data terbaru secara realtime.
 
-Contoh tipe dan ekstensi file Assets :
+Contoh penggunaan setState :
 
-- Static data (JSON)
-- File gambar (.svg, .jpg, .png, dll), file
-- File font (.ttf), file
-- File audio (.MP3, .WAV, .flac, dll),
-- File pdf, dan sebagainya
+```dart
+class _CounterAppState extends State<CounterApp> {
+  int _counter = 0;
 
-#### Menambahkan Assets
+  void _increment() {
+    setState(() {
+      _counter++;
+    });
+  }
 
-Untuk dapat menggunakan Assets, File-file Asset tersebut harus didaftarkan terlebih dahulu di file `pubspec.yaml`. Umumnya Assets disimpan pada sebuah folder `assets`.
-
-```yaml
-  # Menambahkan assets per file
-  assets:
-    - assets/image.png
-    - assets/data.json
-
-  #Menambahkan assets dalam 1 folder sekaligus
-  assets :
-    - assets/
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Counter App'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Counter Value:',
+              ),
+              Text(
+                counter,
+                style: TextStyle(fontSize: 24),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _increment,
+                child: Text('Increment'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 ```
 
-#### Asset Image
+Stateful Widget dan method setState() terbilang kesulitan dalam mengatur state aplikasi apabila aplikasi yang dibuat sangat kompleks dan memiliki banyak perubahan data di banyak halaman. Oleh karena itu, diperlukan Global State Management untuk memudahkan widget-widget mengakses state yang sama.
 
-Image merupakan file gambar yang umumnya digunakan untuk menampilkan icon, background, foto pendukung content, dsb sehingga tampilan aplikasi menjadi lebih menarik. Flutter mendukung banyak format gambar seperti JPEG, WebP, GIF, PNG, BMP, WBMP, dll.
+## Poin Kedua
 
-Untuk dapat menampilkan Asset image terdapat 2 cara, yaitu :
+### Global State Management
 
-- Menggunakan Widget Image
+Global State merupakan State yang bisa digunakan oleh seluruh widget pada aplikasi. Sehingga seluruh builder widget dapat mengakses dan memperbaharui berbagai bagian/komponen dalam aplikasi tanpa terkait langsung dengan hierarki class atau bagian-bagian tertentu dari code.
 
-  ```dart
-  Image(
-    image: AssetImage('assets/image.png'),
-  )
-  ```
+Global State Management merupakan package-package yang digunakan untuk membuat mengatur Global state.
 
-- Menggunakan Method Image.asset (untuk local assets) dan Image.network (untuk remote assets)
+Contoh Global State Management :
 
-  ```dart
-    Image.assets('assets/image.png'),
-    Image.network('https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg')
-  ```
+- Provider
+- BLoC
+- Cubit
+- Riverpod
+- getX
+- Redux
 
-#### Asset Font
+## Poin Ketiga
 
-Asset Font merupakan asset yang digunakan untuk mengubah tampilan teks dalam aplikasi. Styling Font dapat membuat aplikasi menjadi lebih unik. File font biasanya menggunakan format .ttf atau .otf.
+### Provider
 
-Cara menggunakan Asset Font terdapat 2 jenis yaitu :
+#### Pengertian Provider
 
-- Menggunakan Custom Font dari file :
+Provider merupakan salah satu Global state management yang paling simple dan mudah dipelajari. Dengan menggunakan Provider, penggunaan setState yang berlebihan yang mengakibatkan rebuild yang tidak perlu pada widget-tree dapat dihindari, sehingga aplikasi akan lebih efisien dan cepat.
 
-1. Cari dan download file font di internet (contoh : [Google Fonts](fonts.google.com) )
-2. Masukkan file font yang sudah didownload ke folder `assets` di project flutter
-3. Daftarkan file font tersebut di `pubspec.yaml`
+Class yang perlu diperhatikan dalam penggunaan Provider yaitu :
 
-    ```yaml
-    flutter:
-      fonts:
-        - family: NamaFont
-          fonts:
-            - asset: assets/font/NamaFont-Regular.ttf
-            - asset: assets/font/NamaFont-Bold.ttf
-    ```
+- ChangeNotifierProvider
 
-4. Gunakan font dengan cara memanggil nama family font tersebut
+  Merupakan widget yang membungkus sebuah class, memanfaatkan ChangeNotifier dan child untuk Widget UInya. Menyediakan dan mengelola instance dari class yang mengimplementasikan ChangeNotifier
 
-    ```dart
-    Text(
-      'Text',
-      style: TextStyle(
-        fontFamily: 'NamaFont',
-        fontSize: 16.0,
-        fontWeight: FontWeight.bold,
-      ),
-    )
-    ```
+- MultiProvider
 
-- Menggunakan Font dari Package GoogleFonts :
+  Memungkinkan untuk memakai beberapa provider secara bersamaan. Berguna ketika terdapat beberapa model atau instance yang perlu diakses oleh widget tertentu.
 
-1. Tambahkan package google_fonts di dependencies `pubspec.yaml`
+- Consumer
+
+  Widget yang mendengarkan perubahan class yang mengimplementasikan ChangeNotifier, membuild ulang widget yang dibungkus saja, consumer harus diletakkan pada bagian terkecil komponen yang melakukan perubahan.
+
+- ChangeNotifier (built-in Flutter SDK)
+
+  Class yang menambah dan menghapus listeners, digunakan dengan extends, memberi tahu listeners ketika ada perubahan data dan harus melakukan build ulang (menggunakan notifylisteners().).
+
+#### Cara Menggunakan Provider
+
+1. Menambahkan Package Provider di pubspec.yaml pada bagian dependencies
 
     ```yaml
     dependencies:
       flutter:
         sdk: flutter
-      google_fonts: ^2.2.0
+      provider: ^6.0.5
     ```
 
-2. Import package di file dart
+2. Mengimport Package provider pada semua file yang akan menggunakan Provider
 
     ```dart
-      import 'package:google_fonts/google_fonts.dart';
+    import 'package:provider/provider.dart';
     ```
 
-3. Gunakan dengan memanggil GoogleFonts.namaFont() di style widget Text
+3. Buat model data yang mengextend ChangeNotifier
 
     ```dart
-    Text(
-      'Text',
-      style: GoogleFonts.roboto(
-        fontSize: 16.0,
-        fontWeight: FontWeight.bold,
-      ),
-    )
-    ```
-
-## Poin Kedua
-
-### Dialog & Bottom Sheet
-
-Materi pada Minggu 6 pertemuan 2 membahas tentang Dialog & Bottom Sheet. Dialog digunakan untuk menginformasikan ke user tentang informasi tertentu atau untuk mendapatkan input dari user. AlertDialog dan BottomSheet dapat menampilkan informasi melalui popup window yang muncul pada saat ada interaksi dari user.
-
-#### AlertDialog
-
-AlertDialog merupakan sebuah dialog yang biasanya muncul di tengah layar. AlertDialog digunakan bersamaan dengan fungsi showDialog sebagai builder.
-
-Parameter dari fungsi AlertDialog terdiri dari :
-
-- title : Berisi judul dari Dialog, terletak pada bagian atas dialog
-- content : Berisi keterangan/informasi utama dari Dialog, terletak pada bagian tengah dialog
-- actions : Biasanya berisi tombol/button untuk mengkonfirmasi tindakan yang ingin dilakukan, terletak pada bagian bawah dialog
-
-Contoh Penggunaan AlertDialog :
-
-```dart
-showDialog(
-  context: context,
-  builder: (BuildContext context) {
-    return AlertDialog(
-      title: Text('Alert Dialog'),
-      content: Text('Contoh Alert Dialog'),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: Text('OK'),
-        ),
-      ],
-    );
-  },
-);
-```
-
-#### Bottom Sheet
-
-Bottom Sheet merupakan sebuah dialog yang biasanya muncul di bagian bawah layar. FungsishowModalBottomSheet membutuhkan dua properti utama yaitu context dan builder.
-
-Contoh parameter dari fungsi showModalBottomSheet :
-
-- context : Merupakan context aplikasi saat ini.
-- builder : Merupakan builder yang membangun tampilan Bottom Sheet
-- isDismissible : Digunakan untuk mengatur apakab user bisa mengclose Bottom Sheet bila ditekan bagian luarnya
-- enableDrag : Digunakan untuk mengatur apakah Bottom Sheet bisa di scroll atau tidak
-- backgroundColor : Memberi warna pada Bottom Sheet
-- shape : Mengubah bentuk dari Bottom Sheet
-
-Contoh penggunaan Bottom Sheet :
-
-```dart
-showModalBottomSheet(
-  context: context,
-  builder: (BuildContext context) {
-    return Container(
-      child: Wrap(
-        children: <Widget>[
-          ListTile(
-            leading: Icon(Icons.add),
-            title: Text('Tambahkan Item'),
-            onTap: () {
-              // Logika ketika item dipilih
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.delete),
-            title: Text('Hapus Item'),
-            onTap: () {
-              // Logika ketika item dipilih
-              Navigator.pop(context);
-            },
-          ),
-        ],
-      ),
-    );
-  },
-);
-
-```
-
-## Poin Ketiga
-
-### Navigation
-
-Materi pada Minggu 6 pertemuan 3 membahas tentang Flutter Navigation. Navigation merupakan cara untuk berpindah halaman di aplikasi. Navigation dalam Flutter diibaratkan seperti sebuah tumpukan/stack. Navigation di flutter diatur oleh sebuah Object Navigator.
-
-#### Navigation Biasa
-
-Pada Navigation biasa, digunakan method Navigator.push() untuk berpindah halaman dan Navigator.pop() untuk kembali ke halaman sebelumnya. Terdapat beberapa variasi pada Navigator.push() yaitu :
-
-- Navigator.pushReplacement() : Navigator ini akan mereplace halaman saat ini dengan halaman baru, sehingga ketika dilakukan Navigator.pop() maka yang tampil adalah halaman sebelumnya.
-- Navigator.pushAndRemoveUntil() : Navigator ini membuka halaman baru dan menghapus semua halaman yang ada di stack navigator sampai suatu kondisi terpenuhi.
-- Dan masih banyak lagi
-
-Untuk mendapatkan data dari halaman sebelumnya, maka class yang dituju memerlukan properti dan constructor untuk menampung yang diberikan. Sehingga ketika ketika halaman saat ini melalukan Navigator.push(), halaman tersebut terlebih dahulu harus menginisialisasi properti yang dibutuhkan untuk memanggil class di halaman selanjutnya.
-
-Contoh penggunaan Navigator.push() untuk mengirim data :
-
-```dart
-/// Halaman Pertama
-String data = 'Halo';
-
-Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (context) => HalamanKedua(data: data),
-  ),
-);
-
-
-/// Halaman Kedua
-class HalamanKedua extends StatelessWidget {
-  final String data;
-
-  HalamanKedua({required this.data});
-
-  /// Data sudah berhasil didapatkan dan tinggal ditampilkan
-}
-```
-
-#### Navigation dengan Named Routes
-
-Pada Navigasi menggunakan Named Routes, diperlukan sebuah map pada properti routes di MaterialApp. Map tersebut berisi daftar seluruh halaman yang bisa dituju ketika "key" dari map itu dipanggil.
-
-```dart
-MaterialApp(
-  routes: {
-    '/': (context) => HomePage(),
-    '/detail': (context) => DetailPage(),
-  },
-)
-```
-
-Pada Navigation dengan Named Routes, Method Navigator.push() diganti dengan menggunakan Navigator.pushNamed(), sedangkan untuk kembali tetap menggunakan Navigator.pop(). Variasi pada Navigator.pushNamed() sama saja dengan Navigator.push(), hanya tinggal menambahkan kata 'Named' saja ditiap methodnya.
-
-Contoh penggunaan Navigation.pushNamed() :
-
-```dart
-Navigator.pushNamed(context, '/detail');
-```
-
-Untuk mendapatkan data dari halaman sebelumnya, Navigator Named routes biasanya menggunakan sebuah properti arguments yang bisa diisi dengan data yang ingin dikirim. Kemudian pada halaman selanjutnya tinggal membuat variabel yang menyimpan nilai `ModalRoute.of(context)!.settings.arguments`.
-
-```dart
-  /// Halaman Pertama
-  String data = 'Halo';
-
-  Navigator.pushNamed(
-    context,
-    '/halamanKedua',
-    arguments: data,
-  );
-
-  ///Halaman Kedua
-  class HalamanKedua extends StatelessWidget {
-    @override
-    Widget build(BuildContext context) {
-      // Mengambil data dari arguments
-      String? data = ModalRoute.of(context)?.settings.arguments as String?;
-      /// Data sudah berhasil didapatkan dan tinggal ditampilkan
+    class MyModel with ChangeNotifier {
+      // Definisikan state dan method untuk memperbarui state
     }
-  }
-```
+    ```
+
+4. Menambahkan State Provider di file main dengan MultiProvider
+
+    ```dart
+    void main() {
+      runApp(
+        MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (context) => MyModel()),
+          ],
+          child: MyApp(),
+        ),
+      );
+    }
+    ```
+
+5. Menggunakan State dari Provider menggunakan getter (terdapat 2 cara yaitu menggunakan Provider.of() dan Consumer)
+
+    ```dart
+
+    //Contoh Consumer
+    return Consumer<MyModel>(
+      builder: (context, myModel, child) {
+        // Gunakan data dari myModel di sini
+      },
+    );
+
+    //Contoh Provider.of
+    final myModel = Provider.of<MyModel>(context, listen: false);
+
+    //Kalau ingin mengakses/mendapatkan data, pakai myModel.namaProperti
+
+    ```
