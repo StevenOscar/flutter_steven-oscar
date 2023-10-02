@@ -38,41 +38,44 @@ import 'widgets/contact_widgets/text_field_widget.dart';
       barrierDismissible: false,
       context: context,
       builder: (_) {
-        return StatefulBuilder(
-          builder:(context, setState) {
-            return WillPopScope(
-              onWillPop: ()async {return false;},
-              child: AlertDialog(
-                title: Center(
-                  child: Text(
-                    'Edit Contact',
-                    style: ThemeTextStyles().m3HeadlineSmall,
+        return WillPopScope(
+          onWillPop: ()async {return false;},
+          child: AlertDialog(
+            title: Center(
+              child: Text(
+                'Edit Contact',
+                style: ThemeTextStyles().m3HeadlineSmall,
+              ),
+            ),
+            content: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(height: 14),
+                  Consumer<FormColorChangeNotifier>(
+                    builder: (context, colorProvider, child) {
+                      return FilePickerWidget(borderColor: colorProvider.pickedColorValue);
+                    }
                   ),
-                ),
-                content: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const SizedBox(height: 14),
-                      Consumer<FormColorChangeNotifier>(
-                        builder: (context, colorProvider, child) {
-                          return FilePickerWidget(borderColor: colorProvider.pickedColorValue);
-                        }
-                      ),
-                      const SizedBox(height: 14),
-                      TextFieldWidget(
+                  const SizedBox(height: 14),
+                  Consumer<FormNameChangeNotifier>(
+                    builder: (context, nameProvider, child) {
+                      return TextFieldWidget(
                         controller: nameProvider.nameController,
                         errorText: nameProvider.errorTextName,
                         hintText: "Edit name",
                         label: "Name",
                         onChanged: (val){
                           nameProvider.nameOnChanged(val: val);
-                          setState(() {});
                         }
-                      ),
-                      const SizedBox(height: 30),
-                      TextFieldWidget(
+                      );
+                    }
+                  ),
+                  const SizedBox(height: 30),
+                  Consumer<FormNumberChangeNotifier>(
+                    builder: (context, numberProvider, child) {
+                      return TextFieldWidget(
                         controller: numberProvider.numberController,
                         errorText: numberProvider.errorTextNumber,
                         hintText: "Edit nomor",
@@ -80,66 +83,64 @@ import 'widgets/contact_widgets/text_field_widget.dart';
                         keyboardType: TextInputType.phone,
                         onChanged: (val){
                           numberProvider.numberOnChanged(val: val);
-                          setState(() {});
                         }
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: ColorPickerWidget(
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(vertical : 14),
-                        child: DatePickerWidget(),
-                      ),
-                    ],
-                  ),
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      nameProvider.clearField();
-                      numberProvider.clearField();
-                      colorProvider.clearField();
-                      dateProvider.clearField();
-                      fileProvider.clearField();
-                    },
-                    child: Text(
-                      'Cancel',
-                      style : ThemeTextStyles().m3TitleSmall
-                    ),
-                  ),
-                  ElevatedButtonContactWidget(
-                    text: "Done",
-                    fixedSize: const Size(80, 30),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    onPressed: (nameProvider.isNameValid && numberProvider.isNumberValid) ? () {
-                      //Button tidak dijadikan provider karena perlu reset field provider lain
-                      Navigator.pop(context);
-                      contactDataProvider.editContact(
-                        index: index,
-                        nameValue: nameProvider.nameValue,
-                        numberValue: numberProvider.numberValue,
-                        pickedColorValue: colorProvider.pickedColorValue,
-                        pickedDateValue: dateProvider.pickedDateValue,
-                        profilePictureFile: fileProvider.pickedPictureFile
                       );
-                      nameProvider.clearField();
-                      numberProvider.clearField();
-                      colorProvider.clearField();
-                      dateProvider.clearField();
-                      fileProvider.clearField();
-                    } : null
+                    }
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: ColorPickerWidget(),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical : 14),
+                    child: DatePickerWidget(),
                   ),
                 ],
               ),
-            );
-          }
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  nameProvider.clearField();
+                  numberProvider.clearField();
+                  colorProvider.clearField();
+                  dateProvider.clearField();
+                  fileProvider.clearField();
+                },
+                child: Text(
+                  'Cancel',
+                  style : ThemeTextStyles().m3TitleSmall
+                ),
+              ),
+              ElevatedButtonContactWidget(
+                text: "Done",
+                fixedSize: const Size(80, 30),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                onPressed: (nameProvider.isNameValid && numberProvider.isNumberValid) ? () {
+                  //Button tidak dijadikan provider karena perlu reset field provider lain
+                  Navigator.pop(context);
+                  contactDataProvider.editContact(
+                    index: index,
+                    nameValue: nameProvider.nameValue,
+                    numberValue: numberProvider.numberValue,
+                    pickedColorValue: colorProvider.pickedColorValue,
+                    pickedDateValue: dateProvider.pickedDateValue,
+                    profilePictureFile: fileProvider.pickedPictureFile
+                  );
+                  nameProvider.clearField();
+                  numberProvider.clearField();
+                  colorProvider.clearField();
+                  dateProvider.clearField();
+                  fileProvider.clearField();
+                } : null
+              ),
+            ],
+          ),
         );
-      },
+      }
     );
   }
 
