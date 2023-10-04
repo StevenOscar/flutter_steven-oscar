@@ -23,12 +23,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => FormNameChangeNotifier()),
-        ChangeNotifierProvider(create: (_) => FormNumberChangeNotifier()),
-        ChangeNotifierProvider(create: (_) => FormColorChangeNotifier()),
-        ChangeNotifierProvider(create: (_) => FormDateChangeNotifier()),
-        ChangeNotifierProvider(create: (_) => FormFileChangeNotifier()),
-        ChangeNotifierProvider(create: (_) => ContactDataChangeNotifier()),
+        ChangeNotifierProvider<FormNameChangeNotifier>(create: (_) => FormNameChangeNotifier()),
+        ChangeNotifierProvider<FormNumberChangeNotifier>(create: (_) => FormNumberChangeNotifier()),
+        ChangeNotifierProvider<FormColorChangeNotifier>(create: (_) => FormColorChangeNotifier()),
+        ChangeNotifierProvider<FormDateChangeNotifier>(create: (_) => FormDateChangeNotifier()),
+        ChangeNotifierProvider<FormFileChangeNotifier>(create: (_) => FormFileChangeNotifier()),
+        ChangeNotifierProvider<ContactDataChangeNotifier>(create: (_) => ContactDataChangeNotifier()),
       ],
       child: MaterialApp(
         theme: ThemeData(
