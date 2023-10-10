@@ -47,7 +47,7 @@ class FormNumberChangeNotifier with ChangeNotifier {
 
   void clearField(){
     _numberController.clear();
-    _isNumberValid = true;
+    _isNumberValid = false;
     _numberValue = "";
     notifyListeners();
   }

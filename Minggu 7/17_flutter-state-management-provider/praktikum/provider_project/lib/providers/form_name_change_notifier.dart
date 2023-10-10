@@ -53,7 +53,7 @@ class FormNameChangeNotifier with ChangeNotifier {
   void clearField(){
     _nameController.clear();
     _nameValue = "";
-    _isNameValid = true;
+    _isNameValid = false;
     notifyListeners();
   }
 }

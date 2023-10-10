@@ -26,8 +26,8 @@ class HomePage extends StatelessWidget {
               fontSize: 22,
               fontWeight: FontWeight.w500
             ),
-                  ),
-          )
+          ),
+        )
       )
     );
   }
