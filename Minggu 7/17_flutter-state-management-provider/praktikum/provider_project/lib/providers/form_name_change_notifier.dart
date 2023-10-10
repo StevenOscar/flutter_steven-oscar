@@ -21,6 +21,7 @@ class FormNameChangeNotifier with ChangeNotifier {
   }) {
     _nameValue = contactList[index].name;
     _nameController = TextEditingController(text: contactList[index].name);
+    _isNameValid = true;
   }
 
   void nameOnChanged({

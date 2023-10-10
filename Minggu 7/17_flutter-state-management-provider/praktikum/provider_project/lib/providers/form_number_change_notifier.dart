@@ -20,6 +20,7 @@ class FormNumberChangeNotifier with ChangeNotifier {
   }) {
     _numberValue = contactList[index].number;
     _numberController = TextEditingController(text: contactList[index].number);
+    _isNumberValid = true;
   }
 
   void numberOnChanged({
