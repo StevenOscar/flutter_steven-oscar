@@ -1,6 +1,6 @@
 part of 'form_color_bloc.dart';
 
-abstract class FormColorEvent extends Equatable {
+sealed class FormColorEvent extends Equatable {
   const FormColorEvent();
 }
 
@@ -30,5 +30,5 @@ class FormColorSetFieldEvent extends FormColorEvent{
   });
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [index, contactList];
 }

@@ -1,6 +1,6 @@
 part of 'form_file_bloc.dart';
 
-abstract class FormFileEvent extends Equatable {
+sealed class FormFileEvent extends Equatable {
   const FormFileEvent();
 }
 
@@ -41,5 +41,5 @@ class FormFileSetFieldEvent extends FormFileEvent{
   });
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [index, contactList];
 }

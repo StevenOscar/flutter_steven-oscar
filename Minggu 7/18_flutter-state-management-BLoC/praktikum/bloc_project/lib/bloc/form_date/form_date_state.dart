@@ -1,6 +1,6 @@
 part of 'form_date_bloc.dart';
 
-abstract class FormDateState extends Equatable {
+sealed class FormDateState extends Equatable {
   final DateTime pickedDateValue;
 
   const FormDateState({
@@ -13,20 +13,12 @@ abstract class FormDateState extends Equatable {
 
 class FormDateInitialState extends FormDateState {
   FormDateInitialState() : super(pickedDateValue: DateTime.now());
-
-  @override
-  List<Object?> get props => [pickedDateValue];
 }
 
 class FormDatePickedState extends FormDateState {
   const FormDatePickedState({
-    required DateTime pickedDateValue,
-  }) : super(
-    pickedDateValue: pickedDateValue
-  );
-
-  @override
-  List<Object?> get props => [pickedDateValue];
+    required super.pickedDateValue,
+  });
 }
 
 class FormDateClearFieldEvent extends FormDateEvent {

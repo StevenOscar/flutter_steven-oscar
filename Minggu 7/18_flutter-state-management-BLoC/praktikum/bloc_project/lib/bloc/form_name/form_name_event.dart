@@ -1,6 +1,6 @@
 part of 'form_name_bloc.dart';
 
-abstract class FormNameEvent extends Equatable {
+sealed class FormNameEvent extends Equatable {
   const FormNameEvent();
 }
 
@@ -30,5 +30,5 @@ class FormNameSetFieldEvent extends FormNameEvent{
   });
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [index, contactList];
 }

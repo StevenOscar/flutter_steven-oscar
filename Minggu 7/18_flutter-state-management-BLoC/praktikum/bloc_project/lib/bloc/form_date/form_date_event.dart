@@ -1,6 +1,6 @@
 part of 'form_date_bloc.dart';
 
-abstract class FormDateEvent extends Equatable {
+sealed class FormDateEvent extends Equatable {
   const FormDateEvent();
 }
 
@@ -25,5 +25,5 @@ class FormDateSetFieldEvent extends FormDateEvent{
   });
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [index, contactList];
 }

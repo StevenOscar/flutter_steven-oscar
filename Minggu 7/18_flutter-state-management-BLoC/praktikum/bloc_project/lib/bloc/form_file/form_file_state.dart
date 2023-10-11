@@ -1,6 +1,6 @@
 part of 'form_file_bloc.dart';
 
-abstract class FormFileState extends Equatable {
+sealed class FormFileState extends Equatable {
   final PlatformFile? pickedFileValue;
   final File? showPickedFile;
   final bool isFilePicked;
@@ -21,24 +21,14 @@ class FormFileInitialState extends FormFileState {
     showPickedFile : File(""),
     isFilePicked : false
   );
-
-  @override
-  List<Object?> get props => [pickedFileValue, showPickedFile, isFilePicked];
 }
 
 class FormFilePickedState extends FormFileState {
   const FormFilePickedState ({
-    required PlatformFile? pickedFileValue,
-    required File? showPickedFile,
-    required bool isFilePicked
-  }) : super(
-    isFilePicked: isFilePicked,
-    pickedFileValue: pickedFileValue,
-    showPickedFile: showPickedFile
-  );
-
-  @override
-  List<Object?> get props => [pickedFileValue,showPickedFile,isFilePicked];
+    required super.pickedFileValue,
+    required super.showPickedFile,
+    required super.isFilePicked
+  });
 }
 
 class FormFileClearFieldEvent extends FormFileEvent {

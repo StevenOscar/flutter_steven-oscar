@@ -1,6 +1,6 @@
 part of 'contact_data_bloc.dart';
 
-abstract class ContactDataEvent extends Equatable {
+sealed class ContactDataEvent extends Equatable {
   const ContactDataEvent();
 }
 
