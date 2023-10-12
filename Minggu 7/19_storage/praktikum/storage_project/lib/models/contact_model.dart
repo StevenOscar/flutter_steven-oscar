@@ -1,16 +1,16 @@
 import 'package:file_picker/file_picker.dart';
 import 'dart:ui';
 
-import 'package:storage_project/themes/theme_colors.dart';
-
 class ContactModel {
-  String name;
-  String number;
-  PlatformFile? profilePicture;
-  DateTime birthDate;
-  Color profileBorderColor;
+  late int id;
+  late String name;
+  late String number;
+  late PlatformFile? profilePicture;
+  late DateTime birthDate;
+  late Color profileBorderColor;
 
   ContactModel ({
+    required this.id,
     required this.name,
     required this.number,
     required this.profilePicture,
@@ -20,19 +20,30 @@ class ContactModel {
 
   Map<String, dynamic> toMap(){
     return {
+      'id' : id,
       'name' : name,
       'number' : number,
-      'profilePicture' : profilePicture,
-      'birthDate' : birthDate,
-      'profileBorderColor' : profileBorderColor
+      'file_name' : profilePicture?.name,
+      'file_path' : profilePicture?.path,
+      'file_size' : profilePicture?.size,
+      'birth_date' : birthDate.toString(),
+      'profile_border_color' : profileBorderColor.value
     };
   }
 
-  // ContactModel.fromMap(Map<String,dynamic> map){
-  //   name = map['name'];
-  //   number = map['number'];
-  //   profilePicture = map['profilePicture'];
-  //   birthDate = map['birthDate'];
-  //   profileBorderColor = map['profileBorderColor'];
-  // }
+  factory ContactModel.fromMap(Map<String,dynamic> map){
+    return ContactModel(
+      id : map['id'],
+      name : map['name'],
+      number : map['number'],
+      profilePicture : map['file_name'] != null ?
+        PlatformFile(
+          name: 'file_name',
+          path: map['file_path'],
+          size: map['file_size'],
+        ) : null,
+      birthDate : DateTime.parse(map['birth_date']),
+      profileBorderColor : Color(map['profile_border_color'])
+    );
+  }
 }

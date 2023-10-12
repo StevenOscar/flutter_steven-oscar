@@ -4,6 +4,11 @@ sealed class ContactDataEvent extends Equatable {
   const ContactDataEvent();
 }
 
+class ContactDataFetchDatabaseEvent extends ContactDataEvent {
+  @override
+  List<Object?> get props => [];
+}
+
 class ContactDataAddedEvent extends ContactDataEvent {
   final String nameValue;
   final String numberValue;

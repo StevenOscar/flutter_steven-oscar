@@ -150,6 +150,7 @@ class ContactPage extends StatelessWidget {
                   ),
                   BlocBuilder<ContactDataBloc, ContactDataState>(
                     builder: (context, state) {
+                      contactDataBloc.add(ContactDataFetchDatabaseEvent());
                       return ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,

@@ -47,14 +47,24 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                "Welcome $username",
+              const Text(
+                "Welcome,",
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.w700
                 ),
               ),
+              Text(
+                "$username",
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.blue,
+                  fontSize: 35,
+                  fontWeight: FontWeight.w700
+                ),
+              ),
+              Text("Token : $token"),         //Token sebenarnya tidak perlu ditampilkan, hanya mengetes shared preferencenya saja
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 60),
                 child: Text(
