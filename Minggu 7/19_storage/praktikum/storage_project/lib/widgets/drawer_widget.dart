@@ -43,8 +43,7 @@ class DrawerWidget extends StatelessWidget {
                 ),
                 trailing: const Icon(Icons.arrow_right_sharp),
                 onTap: () {
-                  Navigator.pop(context);
-                  Navigator.pushNamed(
+                  Navigator.pushReplacementNamed(
                     context,
                     RoutesNavigation().homePage,
                   );
@@ -64,8 +63,7 @@ class DrawerWidget extends StatelessWidget {
                 ),
                 trailing: const Icon(Icons.arrow_right_sharp),
                 onTap: () {
-                  Navigator.pop(context);
-                  Navigator.pushNamed(
+                  Navigator.pushReplacementNamed(
                     context,
                     RoutesNavigation().contactPage,
                   );
@@ -100,8 +98,7 @@ class DrawerWidget extends StatelessWidget {
                       ),
                       trailing: const Icon(Icons.arrow_right_sharp),
                       onTap: () {
-                        Navigator.pop(context);
-                        Navigator.pushNamed(
+                        Navigator.pushReplacementNamed(
                           context,
                           RoutesNavigation().galleryPage,
                           arguments: imageCategory[index]

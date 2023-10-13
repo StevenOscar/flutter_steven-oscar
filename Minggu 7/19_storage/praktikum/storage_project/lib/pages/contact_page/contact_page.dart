@@ -32,6 +32,7 @@ class ContactPage extends StatelessWidget {
     final fileBloc = context.read<FormFileBloc>();
 
     final contactDataBloc = context.read<ContactDataBloc>();
+    contactDataBloc.add(ContactDataFetchDatabaseEvent());
 
     return Scaffold(
       appBar: AppBar(
@@ -150,7 +151,6 @@ class ContactPage extends StatelessWidget {
                   ),
                   BlocBuilder<ContactDataBloc, ContactDataState>(
                     builder: (context, state) {
-                      contactDataBloc.add(ContactDataFetchDatabaseEvent());
                       return ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
