@@ -32,7 +32,7 @@ class _PageAppbarState extends State<PageAppbar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text("$username Contacts"),
+      title: Text("$username  Contacts"),
       centerTitle: true,
       backgroundColor: ThemeColors().m3SysLightPrimary,
     );
