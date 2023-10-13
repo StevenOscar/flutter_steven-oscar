@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:storage_project/pages/contact_page/page_appbar.dart';
 import '../../bloc/contact_data/contact_data_bloc.dart';
 import '../../bloc/form_color/form_color_bloc.dart';
 import '../../bloc/form_date/form_date_bloc.dart';
@@ -35,11 +36,7 @@ class ContactPage extends StatelessWidget {
     contactDataBloc.add(ContactDataFetchDatabaseEvent());
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Contacts"),
-        centerTitle: true,
-        backgroundColor: ThemeColors().m3SysLightPrimary,
-      ),
+      appBar: const PageAppbar(),
       drawer: const DrawerWidget(),
       body: SingleChildScrollView(
         child: Column(

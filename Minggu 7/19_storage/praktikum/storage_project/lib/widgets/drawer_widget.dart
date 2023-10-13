@@ -2,7 +2,6 @@ import '../routes_navigation.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {
-
   const DrawerWidget({
     super.key,
   });
