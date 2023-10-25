@@ -42,11 +42,11 @@ class RecommendationService {
       final data = jsonEncode({
         "model": "text-davinci-003",
         "prompt": promptData,
-        "temperature": 0.4,
+        "temperature": 0.6,
         "max_tokens": 1024,
         "top_p": 1,
-        "frequency_penalty": 0,
-        "presence_penalty": 0
+        "frequency_penalty": 0.3,
+        "presence_penalty": 0.3
       });
 
       var response = await Dio().post(

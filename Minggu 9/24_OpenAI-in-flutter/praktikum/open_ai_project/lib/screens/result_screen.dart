@@ -34,7 +34,9 @@ class ResultScreen extends StatelessWidget {
                 gptResponseData.choices[0].text,
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
-                  fontSize: 16
+                  fontSize: 16,
+                  height: 1.3,
+                  letterSpacing: 0.5
                 ),
               ),
             )

@@ -18,19 +18,19 @@ class TextFormFieldWidget extends StatelessWidget {
     return TextFormField(
       keyboardType: TextInputType.number,
       controller: controller,
-      decoration: const InputDecoration(
-        fillColor: Color(0xFFE7E0EC),
+      decoration: InputDecoration(
+        fillColor: const Color(0xFFE7E0EC),
         filled: true,
-        labelText: "Budget",
-        labelStyle: TextStyle(
+        labelText: labelText,
+        labelStyle: const TextStyle(
           color: Color(0xFF21005D)
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        hintText: 'Enter your budget (in IDR)',
-        hintStyle : TextStyle(
+        hintText: hintText,
+        hintStyle : const TextStyle(
           color: Colors.black
         ),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
             width: 2,
             color: Color(0xFF21005D)
