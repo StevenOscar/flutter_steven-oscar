@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:open_ai_project/widgets/text_form_field_widgets.dart';
 
 import '../services/recommendation.dart';
 import 'result_screen.dart';
@@ -67,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Phone Recommendation App'),
         centerTitle: true,
+        backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -88,81 +90,69 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
                   "Please enter your budget in IDR",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical : 16),
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
+                padding: const EdgeInsets.only(left: 20, right:20, top : 16, bottom: 25),
+                child: TextFormFieldWidget(
                   controller: _budgetController,
-                  decoration: const InputDecoration(
-                    hintText: 'Enter a budget (in IDR)',
-                  ),
-                  validator: (String? value) {
-                    bool isInvalid = value == null || value.isEmpty || int.tryParse(value) == null;
-                    if (isInvalid) {
-                      return 'Please enter valid numbers';
-                    }
-                    return null;
-                  },
-                ),
+                  labelText: "Budget",
+                  hintText: 'Enter your budget (in IDR)'
+                )
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
                   "Please enter your desired Camera",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical : 16),
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
+                padding: const EdgeInsets.only(left: 20, right:20, top : 16, bottom: 25),
+                child: TextFormFieldWidget(
                   controller: _cameraController,
-                  decoration: const InputDecoration(
-                    hintText: 'Enter your desired Camera (in Megapixel)',
-                  ),
-                  validator: (String? value) {
-                    bool isInvalid = value == null || value.isEmpty || int.tryParse(value) == null;
-                    if (isInvalid) {
-                      return 'Please enter valid numbers';
-                    }
-                    return null;
-                  },
-                ),
+                  labelText: "Camera (MP)",
+                  hintText: "Enter your requirement for the Camera (MP)"
+                )
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
                   "Please enter your desired internal Storage",
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical : 16),
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
-                  controller: _storageController,
-                  decoration: const InputDecoration(
-                    hintText: 'Enter your desired internal Storage (in GB)',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
                   ),
-                  validator: (String? value) {
-                    bool isInvalid = value == null || value.isEmpty || int.tryParse(value) == null;
-                    if (isInvalid) {
-                      return 'Please enter valid numbers';
-                    }
-                    return null;
-                  },
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical : 16),
+                padding: const EdgeInsets.only(left: 20, right:20, top : 16, bottom: 25),
+                child: TextFormFieldWidget(
+                  controller: _storageController,
+                  labelText: "Internal Storage",
+                  hintText: 'Enter your desired internal Storage (GB)'
+                )
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                 child: isLoading && _formKey.currentState!.validate() != false
                   ? const Center(
                       child: CircularProgressIndicator(),
                     )
                   : ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.deepPurple
+                      ),
                       onPressed: _getRecommendations,
                       child: const Center(
-                        child: Text("Get Recommendations"),
+                        child: Text("GET RECOMMENDATIONS"),
                       ),
                     ),
               ),

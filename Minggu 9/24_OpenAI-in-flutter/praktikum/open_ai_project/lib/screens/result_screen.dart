@@ -11,12 +11,14 @@ class ResultScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Phone Recommendations Result'),
+        centerTitle: true,
+        backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.only(top : 40, left: 30, right :30),
+              padding: EdgeInsets.only(top : 35, left: 30, right :30),
               child: Text(
                 "Phone Recommendations \nbased on OpenAI",
                 style: TextStyle(
@@ -27,7 +29,7 @@ class ResultScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.only(left: 30, right: 30, bottom: 50),
               child: Text(
                 gptResponseData.choices[0].text,
                 textAlign: TextAlign.justify,
